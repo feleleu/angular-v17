@@ -2,7 +2,7 @@
   <h2>Control Flow</h2>
 
   <fieldset>
-    <h4>&#64;IF / &#64;else if / &#64;ELSE</h4>
+    <h4>&#64;IF / &#64;ELSE IF / &#64;ELSE</h4>
     <hr />
     @if (isValid() && isConfirmed()) {
       <p>Valid and confirmed</p>
@@ -17,5 +17,47 @@
     <button [disabled]="!isValid()" (click)="isValid.set(false)">Valid disable</button>
     <button [disabled]="!isConfirmed()" (click)="isConfirmed.set(false)">Confirmed disable</button>
     <button (click)="resetValidConfirmedStatus()">Reset status</button>
+  </fieldset>
+
+  <fieldset>
+    <h4>&#64;FOR / &#64;EMPTY</h4>
+    <hr />
+    @if(!requestLoading()) {
+      <ul>
+        @for (
+          item of listData(); track $index;
+
+        ) {
+          <li>{{ item }}</li>
+          <details>
+            <summary>&#9432; More information</summary>
+            <p title="Number of items in a collection iterated over">
+              index: {{$index}}
+            </p>
+            <p title="Index of the current row">
+              count: {{$count}}
+            </p>
+            <p title="Whether the current row is the first row">
+              first: {{$first}}
+            </p>
+            <p title="Whether the current row is the last row">
+              last: {{$last}}
+            </p>
+            <p title="Whether the current row index is even">
+              even: {{$even}}
+            </p>
+            <p title="Whether the current row index is odd">
+              odd: {{$odd}}
+            </p>
+          </details>
+        } @empty {
+          <p>Empty list.</p>
+        }
+      </ul>
+    } @else {
+      <p>Loading list...</p>
+    }
+    <button [disabled]="requestLoading()" (click)="reloadList()">Reload</button>
+    <button [disabled]="requestLoading() || !(listData().length)" (click)="clearList()">Clear list</button>
   </fieldset>
 </div>
