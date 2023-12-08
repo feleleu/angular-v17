@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Control Flow</h2>
+
+  <fieldset>
+    <h4>&#64;IF / &#64;else if / &#64;ELSE</h4>
+    <hr />
+    @if (isValid() && isConfirmed()) {
+      <p>Valid and confirmed</p>
+    } @else if(isValid()) {
+      <p>Valid</p>
+    } @else if(isConfirmed()) {
+      <p>Confirmed</p>
+    } @else {
+      <p>Not valid and confirmed</p>
+    }
+
+    <button [disabled]="!isValid()" (click)="isValid.set(false)">Valid disable</button>
+    <button [disabled]="!isConfirmed()" (click)="isConfirmed.set(false)">Confirmed disable</button>
+    <button (click)="resetValidConfirmedStatus()">Reset status</button>
+  </fieldset>
+</div>
