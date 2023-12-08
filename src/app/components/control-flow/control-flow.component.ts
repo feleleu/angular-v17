@@ -14,8 +14,11 @@ export class ControlFlowComponent implements OnInit {
 
   protected isValid = signal(true);
   protected isConfirmed = signal(true);
+
   protected listData: WritableSignal<Array<string>> = signal([]);
   protected requestLoading = signal(true);
+
+  protected switchCondition = signal('A');
 
   ngOnInit(): void {
     this.#getList();
@@ -47,5 +50,9 @@ export class ControlFlowComponent implements OnInit {
       .subscribe((res) => {
         this.listData.set(res);
       })
+  }
+
+  protected setSwitchCondition(value: string) {
+    this.switchCondition.set(value);
   }
 }

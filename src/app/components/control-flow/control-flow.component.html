@@ -60,4 +60,21 @@
     <button [disabled]="requestLoading()" (click)="reloadList()">Reload</button>
     <button [disabled]="requestLoading() || !(listData().length)" (click)="clearList()">Clear list</button>
   </fieldset>
+
+  <fieldset>
+    <h4>&#64;switch / &#64;case / &#64;default</h4>
+    <hr />
+
+    <p>
+      @switch (switchCondition()) {
+        @case ('A') { Template A }
+        @case ('B') { Template B }
+        @default { Template default }
+      }
+    </p>
+
+    <button [disabled]="switchCondition() === 'A'" (click)="setSwitchCondition('A')">A</button>
+    <button [disabled]="switchCondition() === 'B'" (click)="setSwitchCondition('B')">B</button>
+    <button [disabled]="switchCondition() === ''" (click)="setSwitchCondition('')">Default</button>
+  </fieldset>
 </div>
