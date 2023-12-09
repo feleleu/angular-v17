@@ -14,5 +14,6 @@ export class ArticleComponent {
   @Input() description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea quo unde vel adipisci blanditiis voluptates eum. Nam, cum minima?';
   @Input() date = new Date();
   @Input() author = 'Lorem ipsum';
+  @Input() href = 'https://angular.dev';
 
 }
