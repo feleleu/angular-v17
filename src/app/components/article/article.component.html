@@ -3,23 +3,20 @@
     <span class="container-icon">
       <img src="./assets/icons/communication.svg" alt="icon communication" />
     </span>
-    <p class="alert">Lorem, ipsum dolor.</p>
+    <p class="alert">{{ title }}</p>
   </header>
 
-  <p class="message">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea quo unde
-    vel adipisci blanditiis voluptates eum. Nam, cum minima?
-  </p>
+  <p class="message"> {{ description }} </p>
 
   <footer>
     <p>
       <span class="material-symbols-rounded">calendar_today</span>
-      <time datetime="2015-05-16 19:00">May 16</time>
+      <time datetime="2015-05-16 19:00">{{ date | date: 'longDate' }}</time>
     </p>
 
     <p>
       <span class="material-symbols-rounded">person</span>
-      Lorem ipsum
+      {{ author }}
     </p>
 
     <a class="mark-as-read" href="#">
