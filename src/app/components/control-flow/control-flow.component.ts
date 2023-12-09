@@ -42,7 +42,7 @@ export class ControlFlowComponent implements OnInit {
     this.listData.set([]);
     of(['Item 01', 'Item 02', 'Item 03', 'Item 04', 'Item 05'])
       .pipe(
-        delay(0),
+        delay(3000),
         tap(() => {
           this.requestLoading.set(false);
         }),

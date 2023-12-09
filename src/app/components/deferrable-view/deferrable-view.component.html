@@ -1,3 +1,179 @@
 <div class="container">
   <h2>Deferrable View</h2>
+  <div class="container-article-list">
+    @defer {
+      <app-article
+        title="Deferrable"
+        description="Deferrable views can be used in component template to defer the loading of select dependencies within that template. Those dependencies include components, directives, and pipes, and any associated CSS. To use this feature, you can declaratively wrap a section of your template in a @defer block which specifies the loading conditions."
+        href="https://angular.dev/guide/defer"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer {
+      <app-article
+        title="Defer placeholder"
+        description="By default, defer blocks do not render any content before they are triggered. The @placeholder is an optional block that declares content to show before the defer block is triggered. This placeholder content is replaced with the main content once the loading is complete. You can use any content in the placeholder section including plain HTML, components, directives, and pipes; however keep in mind the dependencies of the placeholder block are eagerly loaded."
+        href="https://angular.dev/guide/defer#placeholder"
+      />
+    } @placeholder(minimum 3000ms) {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer {
+      <app-article
+        title="Defer loading"
+        description="The @loading block is an optional block that allows you to declare content that will be shown during the loading of any deferred dependencies. For example, you could show a loading spinner. Similar to @placeholder, the dependencies of the @loading block are eagerly loaded."
+        href="https://angular.dev/guide/defer#loading"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading(after 100ms; minimum 3s) {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer {
+      <app-article
+        title="Defer error"
+        description="The @error block allows you to declare content that will be shown if deferred loading fails. Similar to @placeholder and @loading, the dependencies of the @error block are eagerly loaded. The @error block is optional."
+        href="https://angular.dev/guide/defer#error"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(on idle) {
+      <app-article
+        title="Defer triggers on idle"
+        description="Idle will trigger the deferred loading once the browser has reached an idle state (detected using the requestIdleCallback API under the hood). This is the default behavior with a defer block."
+        href="https://angular.dev/guide/defer#on-idle"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(on timer(5s)) {
+      <app-article
+        title="Defer triggers on timer"
+        description="Timer(x) would trigger after a specified duration. The duration is required and can be specified in ms or s."
+        href="https://angular.dev/guide/defer#on-timer"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(on viewport) {
+      <app-article
+        title="Defer triggers on viewport"
+        description="Viewport would trigger the deferred block when the specified content enters the viewport using the IntersectionObserver API. This could be the placeholder content or an element reference."
+        href="https://angular.dev/guide/defer#on-viewport"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(on interaction(buttonInteraction)) {
+      <app-article
+        title="Defer triggers on interaction"
+        description="Interaction will trigger the deferred block when the user interacts with the specified element through click or keydown events."
+        href="https://angular.dev/guide/defer#on-interaction"
+      />
+    } @placeholder {
+      <div class="container-button">
+        <button #buttonInteraction>Click me</button>
+      </div>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(on hover(buttonHover)) {
+      <app-article
+        title="Defer triggers on hover"
+        description="Hover triggers deferred loading when the mouse has hovered over the trigger area. Events used for this are mouseenter and focusin."
+        href="https://angular.dev/guide/defer#on-hover"
+      />
+    } @placeholder {
+      <div class="container-button">
+        <button #buttonHover>Hover me</button>
+      </div>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(on immediate) {
+      <app-article
+        title="Defer triggers on immediate"
+        description="Immediate triggers the deferred load immediately, meaning once the client has finished rendering, the defer chunk would then start fetching right away."
+        href="https://angular.dev/guide/defer#on-immediate"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(on interaction(buttonPrefetching); prefetch on interaction(buttonPrefetchingPreload)) {
+      <app-article
+        title="Defer triggers prefetching"
+        description="@defer allows to specify conditions when prefetching of the dependencies should be triggered. You can use a special prefetch keyword. prefetch syntax works similarly to the main defer conditions, and accepts when and/or on to declare the trigger."
+        href="https://angular.dev/guide/defer#prefetching"
+      />
+    } @placeholder {
+      <div class="container-button">
+        <button #buttonPrefetchingPreload>Preload</button>
+        <button #buttonPrefetching>Click me</button>
+      </div>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+
+    @defer(when loading()) {
+      <app-article
+        title="Defer triggers when"
+        description="when specifies an imperative condition as an expression that returns a boolean. When this expression becomes truthy, the placeholder is swapped with the lazily loaded content (which may be an asynchronous operation if the dependencies need to be fetched)."
+        href="https://angular.dev/guide/defer#when"
+      />
+    } @placeholder {
+      <p>Placeholder content</p>
+    } @loading {
+      <p>Loading content</p>
+    } @error {
+      <p>Error content</p>
+    }
+  </div>
 </div>
